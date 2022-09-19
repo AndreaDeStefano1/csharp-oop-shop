@@ -1,6 +1,7 @@
 ﻿class Product
 {
     int code;
+    string codeWithPad;
     string name;
     string description;
     double price;
@@ -12,18 +13,12 @@
     {
 
     }
-    public Product(int code, string name, string description, double price, int vat)
-    {
-        this.code = code;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.VAT = vat;
-    }
+    
 
     public Product(string name, string description, double price, int vat)
     {
         this.code = RandomCodeGenerator();
+        this.codeWithPad = PaddedCode(this.code);
         this.name = name;
         this.description = description;
         this.price = price;
@@ -34,6 +29,10 @@
     public int GetCode()
     {
         return this.code;
+    }
+    public string GetPaddedCode()
+    {
+        return this.codeWithPad;
     }
 
     public string GetName()
@@ -95,6 +94,17 @@
         return code;
     }
 
+
+    public string PaddedCode( int code)
+    {
+        string stringCode = code.ToString();
+        while (stringCode.Length < 8)
+        {
+            stringCode = "0" + stringCode;
+        }
+        return stringCode;
+    }
+
     public double VatPrice(Product p)
     {
         double vatPrice;
@@ -109,4 +119,6 @@
         string extendedName = "";
         return  extendedName = p.GetCode() + " - " + p.GetName();
     }
+
+
 }
