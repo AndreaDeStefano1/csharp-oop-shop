@@ -8,6 +8,10 @@
 
     // COSTRUTTORI
 
+    public Product()
+    {
+
+    }
     public Product(int code, string name, string description, double price, int vat)
     {
         this.code = code;
@@ -97,11 +101,12 @@
 
         vatPrice = (p.GetPrice() * p.GetVat()) / 100;
 
-        return vatPrice;
+        return vatPrice + p.GetPrice();
     }
 
-    public void NameWithCode(Product p)
+    public string NameWithCode(Product p)
     {
-        Console.WriteLine(p.GetCode() + " " + p.GetName());
+        string extendedName = "";
+        return  extendedName = p.GetCode() + " - " + p.GetName();
     }
 }

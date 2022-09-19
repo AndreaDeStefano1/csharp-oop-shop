@@ -7,6 +7,20 @@ class Shop{
     {
         return products;
     }
+    public Product GetItem(string name)
+    {
+        Product p = new Product();
+        foreach (Product item in products)
+        {
+            if (item.GetName() == name)
+            {
+                p = item;
+                break;
+            }
+               
+        }
+        return p;
+    }
 
     public string UserString(string message)
     {
@@ -48,12 +62,15 @@ class Shop{
                 Console.WriteLine("Codice: " + products[i].GetCode());
                 Console.WriteLine("Descrizione: " + products[i].GetDescription());
                 Console.WriteLine("Prezzo: " + products[i].GetPrice());
+                Console.WriteLine("Nome Completo: " + products[i].NameWithCode(products[i]));
                 Console.WriteLine("--------");
                 Console.WriteLine();
-
-
-
             }
+        }
+        if (products[0] == null )
+        {
+            //controllo stupido per vedere se l array è vuoto
+            Console.WriteLine("Nessun prodotto");
         }
     }
 }
