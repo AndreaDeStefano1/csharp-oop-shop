@@ -1,4 +1,6 @@
 ﻿// Aggiungi prodotto 
 // rimuovi Prodotto
 
-Console.WriteLine("shop");
+class Shop{
+
+}
