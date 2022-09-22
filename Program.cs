@@ -58,13 +58,13 @@ static void PrintMenu()
 static int IntInput(string message)
 {
 
-    Chiedi:
     Console.WriteLine(message);
     string s = Console.ReadLine();
-    if (s == null)
+    while (s == null)
     {
         Console.WriteLine("inserimento non valido. Riprova");
-        goto Chiedi;
+        s = Console.ReadLine();
+
     }
 
 
@@ -74,13 +74,13 @@ static int IntInput(string message)
 
 static string StringInput(string message)
 {
-    Chiedi:
     Console.WriteLine(message);
     string s = Console.ReadLine();
-    if (s == null)
+    while (s == null)
     {
         Console.WriteLine("inserimento non valido. Riprova");
-        goto Chiedi;
+        s = Console.ReadLine();
+
     }
 
     return s; 
@@ -88,13 +88,13 @@ static string StringInput(string message)
 
 static double DoubleInput(string message)
 {
-    Chiedi:
     Console.WriteLine(message);
     string s = Console.ReadLine();
-    if (s == null)
+    while (s == null)
     {
         Console.WriteLine("inserimento non valido. Riprova");
-        goto Chiedi;
+        s = Console.ReadLine();
+
     }
 
     return Convert.ToDouble(s);

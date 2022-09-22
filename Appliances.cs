@@ -133,39 +133,32 @@
 
 // nuova versione
 
-abstract class Product
+class Appliances : Product, IShop
 {
 
-    public int Code { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public double Price { get; set; }
-    public int Vat { get; set; }
+    public string EnergyRating { get; set; }
+    public double Heigth { get; set; }
+    public double Width { get; set; }
 
-    public int MaxQuantity { get; set; }
-    public int QuantityAvaible { get; set; }
-
-
-    protected Product(int code, string name, string description, double price, int vat, int maxQuantity, int quantityAvaible)
+    public Appliances(int code, string name, string description, double price, int vat, int maxQuantity, int quantityAvaible, string energyRating, double heigth, double width) : base(code, name, description, price, vat, maxQuantity, quantityAvaible)
     {
-        Code = code;
-        Name = name;
-        Description = description;
-        Price = price;
-        Vat = vat;
-        MaxQuantity = maxQuantity;
-        QuantityAvaible = quantityAvaible;
+        Vat = 22;
+        EnergyRating = energyRating;
+        Heigth = heigth;
+        Width = width;
     }
 
-
-    public int RandomCodeGenerator()
+    public double VatPrice(Product p)
     {
-        int code;
+        double vatPrice;
 
-        Random r = new Random();
-        code = r.Next(1, 99999999);
+        vatPrice = (p.Price * p.Vat) / 100;
 
-        return code;
+        return vatPrice + p.Price;
     }
 
+    public int QuantityToOrder(int quantity)
+    {
+        return MaxQuantity - quantity;
+    }
 }

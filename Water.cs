@@ -1,4 +1,4 @@
-﻿class Water : Product
+﻿class Water : Product, IShop
 {
     public double Liter { get; set; }
     public double Ph { get; set; }
@@ -9,5 +9,17 @@
         Liter = liter;
     }
 
+    public int QuantityToOrder(int quantity)
+    {
+        return MaxQuantity - quantity;
+    }
 
+    public double VatPrice(Product p)
+    {
+        double vatPrice;
+
+        vatPrice = (p.Price * p.Vat) / 100;
+
+        return vatPrice + p.Price;
+    }
 }
