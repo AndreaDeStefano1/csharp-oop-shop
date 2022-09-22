@@ -1,5 +1,4 @@
-﻿/// vecchia versione
-
+﻿
 #region
 //class Product
 //{
@@ -133,6 +132,8 @@
 
 // nuova versione
 
+using System;
+/// vecchia versione
 abstract class Product
 {
 
@@ -146,13 +147,12 @@ abstract class Product
     public int QuantityAvaible { get; set; }
 
 
-    protected Product(int code, string name, string description, double price, int vat, int maxQuantity, int quantityAvaible)
+    protected Product(int code, string name, string description, double price, int maxQuantity, int quantityAvaible)
     {
         Code = code;
         Name = name;
         Description = description;
         Price = price;
-        Vat = vat;
         MaxQuantity = maxQuantity;
         QuantityAvaible = quantityAvaible;
     }
@@ -160,6 +160,11 @@ abstract class Product
 
     public virtual void Print()
     {
-        Console.WriteLine($"Nome: {Name} \nDescrizione: {Description} \nPrice: {Price} \nDisponibilità: {QuantityAvaible}");
+        Console.WriteLine($"Nome: {Name} \nDescrizione: {Description} \nPrice: {Math.Round(Price)} \nDisponibilità: {QuantityAvaible}\n\n");
+    }
+
+    public virtual void PrintList()
+    {
+        Console.WriteLine($"\nNome: {Name}  {Math.Round(Price)}€");
     }
 }

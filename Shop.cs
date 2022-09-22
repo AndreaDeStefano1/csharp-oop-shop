@@ -84,5 +84,30 @@
 
 class Shop
 {
-    public List<Product> prodotti = new List<Product>();
+    public List<Product> products = new List<Product>();
+    public List<Product> shoppingCart = new List<Product>();   
+
+    public double TotalPrice()
+    {
+        double total = 0;
+
+        foreach (Product item in shoppingCart)
+        {
+            total += item.Price;
+        }
+        return total;
+    }
+
+    public void AddProduct(string name)
+    {
+        foreach (Product item in products)
+        {
+            if(item.Name == name)
+            {
+                shoppingCart.Add(item);
+            }
+
+        }
+
+    }
 }

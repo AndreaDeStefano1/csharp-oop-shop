@@ -140,7 +140,7 @@ class Appliances : Product, IShop
     public double Heigth { get; set; }
     public double Width { get; set; }
 
-    public Appliances(int code, string name, string description, double price, int vat, int maxQuantity, int quantityAvaible, string energyRating, double heigth, double width) : base(code, name, description, price, vat, maxQuantity, quantityAvaible)
+    public Appliances(int code, string name, string description, double price, int maxQuantity, int quantityAvaible, string energyRating, double heigth, double width) : base(code, name, description, price, maxQuantity, quantityAvaible)
     {
         Vat = 22;
         EnergyRating = energyRating;
@@ -153,8 +153,10 @@ class Appliances : Product, IShop
         double vatPrice;
 
         vatPrice = (Price * Vat) / 100;
+        vatPrice = vatPrice + Price;
 
-        return vatPrice + Price;
+
+        return vatPrice;
     }
 
     public int QuantityToOrder(int quantity)
@@ -166,4 +168,12 @@ class Appliances : Product, IShop
         Console.WriteLine($"Nome: {Name} \nDescrizione: {Description} \nPrice: {VatPrice()} \nDisponibilità: {QuantityAvaible} \nClasse energetica: {EnergyRating} \nDimensioni: altezza {Heigth}cm, larghezza {Width}cm");
 
     }
+
+    public override void PrintList()
+    {
+        Console.WriteLine($"\nNome: {Name}  {Math.Round(VatPrice())}€");
+    }
+
+
+
 }

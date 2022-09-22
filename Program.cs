@@ -1,26 +1,30 @@
 ﻿
 using System.Runtime.ConstrainedExecution;
 using System.Security.Cryptography;
+Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+
+
 bool exit = false;
 Shop s = new Shop();
 // Inizializzo dei prodotti
-#region
-Water w = new Water(1.5, 7, RandomCodeGenerator(), "Ferrarelle", "Fresca come l'acqua", 0.35, 4, 100, 57);
-s.prodotti.Add(w);
-Water w2 = new Water(2, 6.5, RandomCodeGenerator(), "Lete", "Fresca come la ferrarelle", 0.30, 4, 100, 1);
-s.prodotti.Add(w2);
+#region 
 
-FruitBag f = new FruitBag(RandomCodeGenerator(), "Banana in pezzi", "Frutta fresca in pezzi", 1.5, 4, 20, 2, 5);
-s.prodotti.Add(f);
-FruitBag f2 = new FruitBag(RandomCodeGenerator(), "Macedonia in pezzi", "Frutta fresca in pezzi", 3.5, 4, 10, 5, 5);
-s.prodotti.Add(f2);
+Water w = new Water(1.5, 7, RandomCodeGenerator(), "Ferrarelle", "Fresca come l'acqua", 1.35,  100, 57);
+s.products.Add(w);
+Water w2 = new Water(2, 6.5, RandomCodeGenerator(), "Lete", "Fresca come la ferrarelle", 0.30,  100, 1);
+s.products.Add(w2);
 
-Appliances a = new Appliances(RandomCodeGenerator(), "Frigorifero Whirpoll", "MOD. F43222", 100.99, 22, 3, 1, "A", 2.5, 0.75);
-s.prodotti.Add(a);
-Appliances a2 = new Appliances(RandomCodeGenerator(), "Frigorifero", "MOD. FX43222", 100.99, 22, 3, 1, "A", 2.5, 0.75);
-s.prodotti.Add(a2);
-#endregion
+FruitBag f = new FruitBag(RandomCodeGenerator(), "Banana in pezzi", "Frutta fresca in pezzi", 1.5,  20, 2, 5);
+s.products.Add(f);
+FruitBag f2 = new FruitBag(RandomCodeGenerator(), "Macedonia in pezzi", "Frutta fresca in pezzi", 3.5,  10, 5, 5);
+s.products.Add(f2);
 
+Appliances a = new Appliances(RandomCodeGenerator(), "Frigorifero Whirpoll", "MOD. F43222", 100,  3, 1, "A", 2.5, 0.75);
+s.products.Add(a);
+Appliances a2 = new Appliances(RandomCodeGenerator(), "Frigorifero", "MOD. FX43222", 100.99, 3, 1, "A", 2.5, 0.75);
+s.products.Add(a2);
+#endregion 
 
 do
 {
@@ -32,24 +36,27 @@ do
     {
 
         case 1:
-            //Console.Clear();
-            //s.AddProduct();
-            //Console.Clear();
-            w.Print();
+            foreach (Product item in s.products)
+            {
+                item.PrintList();
+            }
+            
             break;
 
 
         case 2:
-            //Console.Clear();
-            //s.PrintProducts(s.GetProducts());
+            string prodotto = "0";
+            do
+            {
+                prodotto = StringInput("Cosa vuoi aggiungere al carello? Premi 0 per uscire");
+                s.AddProduct(prodotto);
+            } while (prodotto != "0");
+           
 
             break;
 
         case 3:
-            //Product p = new Product();
-            //p = s.GetItem(s.UserString("Digita il nome del prodotto da cercare"));
-            //Console.Clear();
-            //Console.WriteLine("Il prezzo ivato è " + p.VatPrice(p) + " Euro");
+            Console.WriteLine(s.TotalPrice());
             break;
 
         default:
@@ -66,8 +73,8 @@ static void PrintMenu()
 {
     Console.WriteLine("");
     Console.WriteLine("Azioni: ");
-    Console.WriteLine("1.Aggiungi");
-    Console.WriteLine("2.Visualizza");
+    Console.WriteLine("1.Stampa catalogo");
+    Console.WriteLine("2.Aggiungi prodotto al carrello");
     Console.WriteLine("3.Visualizza prezzo ivato di un prodotto");
     Console.WriteLine("5.Esci");
     Console.WriteLine("");

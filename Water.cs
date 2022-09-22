@@ -3,8 +3,9 @@
     public double Liter { get; set; }
     public double Ph { get; set; }
     public string Source { get; set; }
-    public Water(double liter, double ph, int code, string name, string description, double price, int vat, int maxQuantity, int quantityAvaible) : base(code, name, description, price, vat, maxQuantity, quantityAvaible)
+    public Water(double liter, double ph, int code, string name, string description, double price, int maxQuantity, int quantityAvaible) : base(code, name, description, price, maxQuantity, quantityAvaible)
     {
+        Vat = 4;
         Ph = ph;
         Liter = liter;
     }
@@ -25,7 +26,11 @@
 
     public override void Print()
     {
-        Console.WriteLine($"Nome: {Name} \nDescrizione: {Description} \nPrice: {VatPrice()} \nDisponibilità: {QuantityAvaible} \nPh: {Ph} \nLitri: {Liter}");
+        Console.WriteLine($"Nome: {Name} \nDescrizione: {Description} \nPrice: {Math.Round(VatPrice())} \nDisponibilità: {QuantityAvaible} \nPh: {Ph} \nLitri: {Liter}\n\n");
 
+    }
+    public override void PrintList()
+    {
+        Console.WriteLine($"\nNome: {Name}  {Math.Round(VatPrice())}€");
     }
 }
