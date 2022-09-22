@@ -22,4 +22,10 @@
 
         return vatPrice + p.Price;
     }
+
+    public void PrintProduct(Water p)
+    {
+        p
+
+    }
 }
