@@ -14,18 +14,18 @@
         return MaxQuantity - quantity;
     }
 
-    public double VatPrice(Product p)
+    public double VatPrice()
     {
         double vatPrice;
 
-        vatPrice = (p.Price * p.Vat) / 100;
+        vatPrice = (Price * Vat) / 100;
 
-        return vatPrice + p.Price;
+        return vatPrice + Price;
     }
 
-    public void PrintProduct(Water p)
+    public override void Print()
     {
-        p
+        Console.WriteLine($"Nome: {Name} \nDescrizione: {Description} \nPrice: {VatPrice()} \nDisponibilità: {QuantityAvaible} \nPh: {Ph} \nLitri: {Liter}");
 
     }
 }

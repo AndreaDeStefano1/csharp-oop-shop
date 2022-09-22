@@ -148,17 +148,22 @@ class Appliances : Product, IShop
         Width = width;
     }
 
-    public double VatPrice(Product p)
+    public double VatPrice()
     {
         double vatPrice;
 
-        vatPrice = (p.Price * p.Vat) / 100;
+        vatPrice = (Price * Vat) / 100;
 
-        return vatPrice + p.Price;
+        return vatPrice + Price;
     }
 
     public int QuantityToOrder(int quantity)
     {
         return MaxQuantity - quantity;
+    }
+    public override void Print()
+    {
+        Console.WriteLine($"Nome: {Name} \nDescrizione: {Description} \nPrice: {VatPrice()} \nDisponibilità: {QuantityAvaible} \nClasse energetica: {EnergyRating} \nDimensioni: altezza {Heigth}cm, larghezza {Width}cm");
+
     }
 }

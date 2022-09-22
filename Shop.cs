@@ -84,5 +84,5 @@
 
 class Shop
 {
-    List<Product> prodotti = new List<Product>();
+    public List<Product> prodotti = new List<Product>();
 }

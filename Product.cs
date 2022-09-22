@@ -158,14 +158,8 @@ abstract class Product
     }
 
 
-    public int RandomCodeGenerator()
+    public virtual void Print()
     {
-        int code;
-
-        Random r = new Random();
-        code = r.Next(1, 99999999);
-
-        return code;
+        Console.WriteLine($"Nome: {Name} \nDescrizione: {Description} \nPrice: {Price} \nDisponibilità: {QuantityAvaible}");
     }
-
 }

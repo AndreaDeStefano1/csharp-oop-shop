@@ -1,8 +1,27 @@
 ﻿
 using System.Runtime.ConstrainedExecution;
-
-Shop s = new Shop();
+using System.Security.Cryptography;
 bool exit = false;
+Shop s = new Shop();
+// Inizializzo dei prodotti
+#region
+Water w = new Water(1.5, 7, RandomCodeGenerator(), "Ferrarelle", "Fresca come l'acqua", 0.35, 4, 100, 57);
+s.prodotti.Add(w);
+Water w2 = new Water(2, 6.5, RandomCodeGenerator(), "Lete", "Fresca come la ferrarelle", 0.30, 4, 100, 1);
+s.prodotti.Add(w2);
+
+FruitBag f = new FruitBag(RandomCodeGenerator(), "Banana in pezzi", "Frutta fresca in pezzi", 1.5, 4, 20, 2, 5);
+s.prodotti.Add(f);
+FruitBag f2 = new FruitBag(RandomCodeGenerator(), "Macedonia in pezzi", "Frutta fresca in pezzi", 3.5, 4, 10, 5, 5);
+s.prodotti.Add(f2);
+
+Appliances a = new Appliances(RandomCodeGenerator(), "Frigorifero Whirpoll", "MOD. F43222", 100.99, 22, 3, 1, "A", 2.5, 0.75);
+s.prodotti.Add(a);
+Appliances a2 = new Appliances(RandomCodeGenerator(), "Frigorifero", "MOD. FX43222", 100.99, 22, 3, 1, "A", 2.5, 0.75);
+s.prodotti.Add(a2);
+#endregion
+
+
 do
 {
     PrintMenu();
@@ -16,6 +35,7 @@ do
             //Console.Clear();
             //s.AddProduct();
             //Console.Clear();
+            w.Print();
             break;
 
 
@@ -102,4 +122,16 @@ static double DoubleInput(string message)
 
 }
 
+static int RandomCodeGenerator()
+{
+       
+
+    int code;
+
+    Random r = new Random();
+    code = r.Next(1, 99999999);
+
+    return code;
+
+}
 

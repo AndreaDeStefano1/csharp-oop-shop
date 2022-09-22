@@ -13,12 +13,12 @@
         return MaxQuantity - quantity;
     }
 
-    public double VatPrice(Product p)
+    public double VatPrice()
     {
         double vatPrice;
 
-        vatPrice = (p.Price * p.Vat) / 100;
+        vatPrice = (Price * Vat) / 100;
 
-        return vatPrice + p.Price;
+        return vatPrice + Price;
     }
 }
